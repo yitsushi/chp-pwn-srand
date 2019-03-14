@@ -14,7 +14,7 @@ function generateCaptcha($length = 18) {
 $timeDiff = 0;
 
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'http://127.0.0.1:8080/');
+curl_setopt($curl, CURLOPT_URL, 'http://3.vulnerable.local/');
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 $data        = curl_exec($curl);
 curl_close($curl);
@@ -23,7 +23,7 @@ $serverTime = (int)substr($data, strpos($data, 'ts=')+3, 10);
 $timeDiff = $serverTime - time();
 
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'http://127.0.0.1:8080/?image');
+curl_setopt($curl, CURLOPT_URL, 'http://3.vulnerable.local/?image');
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_HEADER, true);
 $data        = curl_exec($curl);
@@ -51,7 +51,7 @@ if( count($cookieStore) > 0 ){
     curl_setopt($curl, CURLOPT_COOKIE, implode("; ",$cookieBuffer) );
 }
 
-curl_setopt($curl, CURLOPT_URL, 'http://127.0.0.1:8080/');
+curl_setopt($curl, CURLOPT_URL, 'http://3.vulnerable.local/');
 curl_setopt($curl, CURLOPT_POST, 1);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_HEADER, false);
